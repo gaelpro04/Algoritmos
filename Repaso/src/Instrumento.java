@@ -5,17 +5,19 @@ public class Instrumento {
 
     private String nombre;
     private String tipo;
+    private String problemaMental;
     private ArrayList<String> autores;
     private boolean evaluacion;
     private int clave;
     private static int claveActual = 0;
     private String referencia;
 
-    public Instrumento(String nombre, String tipo, boolean evaluacion, String referencia) {
+    public Instrumento(String nombre, String tipo, boolean evaluacion, String referencia, String problemaMental) {
         Scanner sc = new Scanner(System.in);
 
         this.nombre = nombre;
         this.tipo = tipo;
+        this.problemaMental = problemaMental;
         this.evaluacion = evaluacion;
         this.referencia = referencia;
 
@@ -24,11 +26,26 @@ public class Instrumento {
 
         System.out.println("Ingresa la cantidad de autores");
         int cantidadAutores = sc.nextInt();
+        sc.nextLine();
         autores = new ArrayList<>(cantidadAutores);
 
         for (int i = 0; i < cantidadAutores; i++) {
             System.out.println("Ingresa el autor numero " + (i + 1));
-            autores.add(sc.next());
+            autores.add(sc.nextLine());
+        }
+    }
+
+    public Instrumento(String nombre, String tipo, boolean evaluacion, String referencia, String problemaMental, String autores, int clave) {
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.problemaMental = problemaMental;
+        this.evaluacion = evaluacion;
+        this.referencia = referencia;
+        this.autores = new ArrayList<>();
+        this.clave = clave;
+        String[] nombres = autores.split(" ");
+        for (int i = 0; i < nombres.length; i++) {
+            this.autores.add(nombres[i]);
         }
     }
 
@@ -76,6 +93,14 @@ public class Instrumento {
         this.referencia = referencia;
     }
 
+    public String getProblemaMental() {
+        return problemaMental;
+    }
+
+    public void setProblemaMental(String problemaMental) {
+        this.problemaMental = problemaMental;
+    }
+
     public String toString()
     {
         StringBuilder builder = new StringBuilder();
@@ -84,6 +109,6 @@ public class Instrumento {
         }
         String nombres = builder.toString();
 
-        return "Nombre: " + nombre + "Tipo: " + nombres + "Evaluacion: " + (evaluacion ? "certificado" : "no certificado")  + "Clave: " + clave + "Referencia: " + referencia;
+        return "Nombre: " + nombre + " Tipo: " + tipo + " Autores: " + nombres + " Evaluacion: " + (evaluacion ? " certificado" : " no certificado")  + " Clave: " + clave + " Referencia: " + referencia + " Problema: " + problemaMental;
     }
 }
