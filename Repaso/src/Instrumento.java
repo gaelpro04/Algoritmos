@@ -10,9 +10,9 @@ public class Instrumento {
     private boolean evaluacion;
     private int clave;
     private static int claveActual = 0;
-    private String referencia;
+    private int referencia;
 
-    public Instrumento(String nombre, String tipo, boolean evaluacion, String referencia, String problemaMental) {
+    public Instrumento(String nombre, String tipo, boolean evaluacion, int referencia, String problemaMental) {
         Scanner sc = new Scanner(System.in);
 
         this.nombre = nombre;
@@ -35,7 +35,7 @@ public class Instrumento {
         }
     }
 
-    public Instrumento(String nombre, String tipo, boolean evaluacion, String referencia, String problemaMental, String autores, int clave) {
+    public Instrumento(String nombre, String tipo, boolean evaluacion, int referencia, String problemaMental, String autores, int clave) {
         this.nombre = nombre;
         this.tipo = tipo;
         this.problemaMental = problemaMental;
@@ -85,11 +85,11 @@ public class Instrumento {
         return clave;
     }
 
-    public String getReferencia() {
+    public int getReferencia() {
         return referencia;
     }
 
-    public void setReferencia(String referencia) {
+    public void setReferencia(int referencia) {
         this.referencia = referencia;
     }
 

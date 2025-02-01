@@ -27,7 +27,7 @@ public class SistemaSaludMental {
     /**
      * Método para registrar un instrumento
      */
-    public void registrarInstrumento(String nombre, String tipo, boolean evaluacion, String referencia, String problemaMental)
+    public void registrarInstrumento(String nombre, String tipo, boolean evaluacion, int referencia, String problemaMental)
     {
         instrumentos.add(new Instrumento(nombre, tipo, evaluacion, referencia, problemaMental));
     }
@@ -77,7 +77,7 @@ public class SistemaSaludMental {
 
                 String[] contenido = linea.split(",");
 
-                instrumentos.add(new Instrumento(contenido[0], contenido[1], (contenido[2].equals("true")), contenido[3], contenido[4], contenido[5], Integer.parseInt(contenido[6])));
+                instrumentos.add(new Instrumento(contenido[0], contenido[1], (contenido[2].equals("true")), Integer.parseInt(contenido[3]), contenido[4], contenido[5], Integer.parseInt(contenido[6])));
             }
             reader.close();
 
@@ -216,11 +216,11 @@ public class SistemaSaludMental {
     /**
      * Método para buscar por referencia
      */
-    public void buscarPorReferecnia(String referencia)
+    public void buscarPorReferecnia(int referencia)
     {
         int cont = 0;
         for (Instrumento instrumento : instrumentos) {
-            if (instrumento.getReferencia().equals(referencia)) {
+            if (instrumento.getReferencia() == referencia) {
                 System.out.println(instrumento);
                 ++cont;
             }
