@@ -2,10 +2,15 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.io.*;
 
+//Clase que modela el control de una colección de instrumentos
 public class SistemaSaludMental {
 
+    //Atributo
     private ArrayList<Instrumento> instrumentos;
 
+    /**
+     * Constructor para iniciar la coleccion
+     */
     public SistemaSaludMental()
     {
         instrumentos = new ArrayList<>();
@@ -16,7 +21,10 @@ public class SistemaSaludMental {
      */
     public void consultarTodos()
     {
+        //Contador para enumerar cada impresión
         int contador = 0;
+
+        //Por cada instrumento de la colección se imprimirá en consola con un numero especifico
         for (Instrumento instrumento : instrumentos) {
 
             contador++;
@@ -29,6 +37,7 @@ public class SistemaSaludMental {
      */
     public void registrarInstrumento(String nombre, String tipo, boolean evaluacion, int referencia, String problemaMental)
     {
+        //Solo creamos una nueva instancia en la colección de un nuevo objeto tipo Instrumento
         instrumentos.add(new Instrumento(nombre, tipo, evaluacion, referencia, problemaMental));
     }
 
@@ -37,6 +46,9 @@ public class SistemaSaludMental {
      */
     public void eliminarPorClave(int clave)
     {
+        //Se utiliza de lambdas para poder eliminar más facilmente el instrumento
+        //Se guía por filtro, donde pedimos que información filtrar de la colección(la clave que estamos buscando) y aplicamos
+        //el método forEach, que por cada elemento con tal filtro, se removerá de la lista
         instrumentos.stream().filter(instrumento -> clave == instrumento.getClave()).forEach(instrumento -> instrumentos.remove(instrumento));
     }
 
@@ -45,15 +57,22 @@ public class SistemaSaludMental {
      */
     public void guardarEnArchivo(String nombreArchivo)
     {
+        //Comenzamos con un try en dado caso que haya un error de escritura
         try {
+            //Iniciamos la instancia del flujo que podrá conectar el archivo con su escritura, además en el constructor de
+            //FileWriter ponemos false para que no agregue en dado caso de que ya exista
             BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo,false));
 
+            //El String builder es para poder crear una variable donde podamos ser valida la lectura posterior de un archivo del atributo autores
             StringBuilder builder = new StringBuilder();
+
+            //Por cada Instrumento de la colección, se guardará cada autor de ese instrumento en el StringBuilder
             for (Instrumento instrumento : instrumentos) {
                 for (String autor : instrumento.getAutores()) {
                     builder.append(autor).append(" ");
                 }
                 String autores = builder.toString();
+                //Por ultimo cada variable del instrumento, se guardará en el archivo separadas por comas
                 writer.write(instrumento.getNombre() + "," + instrumento.getTipo() + "," + instrumento.isEvaluacion() + "," + instrumento.getReferencia() + "," + instrumento.getProblemaMental() + "," + autores + "," + instrumento.getClave());
                 writer.newLine();
             }

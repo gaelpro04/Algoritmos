@@ -1,8 +1,10 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+//Clase que modela un instrumento para valorar la salud mental de un paciente
 public class Instrumento {
 
+    //Atributos de la clase
     private String nombre;
     private String tipo;
     private String problemaMental;
@@ -12,6 +14,14 @@ public class Instrumento {
     private static int claveActual = 0;
     private int referencia;
 
+    /**
+     * Constructor para la creación de un nuevo instrumento
+     * @param nombre
+     * @param tipo
+     * @param evaluacion
+     * @param referencia
+     * @param problemaMental
+     */
     public Instrumento(String nombre, String tipo, boolean evaluacion, int referencia, String problemaMental) {
         Scanner sc = new Scanner(System.in);
 
@@ -35,6 +45,16 @@ public class Instrumento {
         }
     }
 
+    /**
+     * Constructor para la lectura de un instrumento ya hecho
+     * @param nombre
+     * @param tipo
+     * @param evaluacion
+     * @param referencia
+     * @param problemaMental
+     * @param autores
+     * @param clave
+     */
     public Instrumento(String nombre, String tipo, boolean evaluacion, int referencia, String problemaMental, String autores, int clave) {
         this.nombre = nombre;
         this.tipo = tipo;
@@ -48,6 +68,9 @@ public class Instrumento {
             this.autores.add(nombres[i]);
         }
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //Getters y setters de la clase
 
     public String getTipo() {
         return tipo;
@@ -101,6 +124,10 @@ public class Instrumento {
         this.problemaMental = problemaMental;
     }
 
+    /**
+     * Método que devuelve la información de la clase en String
+     * @return
+     */
     public String toString()
     {
         StringBuilder builder = new StringBuilder();
