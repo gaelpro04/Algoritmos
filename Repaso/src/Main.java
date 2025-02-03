@@ -116,10 +116,9 @@ public class Main {
                             opcion = sc.nextLine();
                             if (opcion.equals("si")) {
                                 sistema.eliminarTodo();
-                            } else if (opcion.equals("no")) {
-                                sistema.leerArchivo(nombreArchivo1);
                             }
                         } while (!opcion.equals("si") && !opcion.equals("no"));
+                        sistema.leerArchivo(nombreArchivo1);
 
                     } else {
                         sistema.leerArchivo(nombreArchivo1);
