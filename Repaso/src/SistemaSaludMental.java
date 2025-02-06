@@ -121,8 +121,13 @@ public class SistemaSaludMental {
     /**
      * Método que busca todos los instrumentos mediante el nombre del mismo instrumento
      */
-    public void buscarPorInstrumento(String instrumentoNombre)
+    public String buscarPorInstrumento(String instrumentoNombre)
     {
+        StringBuilder instrumentos1 = new StringBuilder();
+        instrumentos.stream().filter(instrumento -> instrumento.getNombre().equals(instrumentoNombre)).forEach(instrumento -> instrumentos1.append(toString() + "\n"));
+        return instrumentos1.toString();
+
+        /*
         int cont = 0;
         for (Instrumento instrumento : instrumentos) {
             if (instrumento.getNombre().equals(instrumentoNombre)) {
@@ -133,14 +138,20 @@ public class SistemaSaludMental {
         if (cont == 0) {
             System.out.println("No se encuentran instrumentos con esa especificación");
         }
+        */
     }
 
     /**
      * Método que busca todo los instrumentos por el nombre del autor
      * @param autor
      */
-    public void buscarPorAutor(String autor)
+    public String buscarPorAutor(String autor)
     {
+        StringBuilder instrumento1 = new StringBuilder();
+        instrumentos.stream().filter(instrumento -> instrumento.getAutores().stream().filter(autores -> autores.equals(autor)).isParallel()).forEach(autores -> instrumento1.append(toString()));
+        return instrumento1.toString();
+
+        /*
         int cont = 0;
         for (Instrumento instrumento : instrumentos) {
             for (String autores : instrumento.getAutores()) {
@@ -154,14 +165,19 @@ public class SistemaSaludMental {
         if (cont == 0) {
             System.out.println("No se encuentran instrumentos con esa especificación");
         }
+         */
     }
 
     /**
      * Método para buscar datos mediante el tipo
      * @param tipo
      */
-    public void buscarPorTipo(String tipo) {
-
+    public String buscarPorTipo(String tipo)
+    {
+        StringBuilder instrumento1 = new StringBuilder();
+        instrumentos.stream().filter(instrumento -> instrumento.getTipo().equals(tipo)).forEach(instrumento -> instrumento1.append(toString() + "\n"));
+        return instrumento1.toString();
+        /*
         int cont = 0;
         for (Instrumento instrumento : instrumentos) {
             if (instrumento.getTipo().equals(tipo)) {
@@ -173,13 +189,19 @@ public class SistemaSaludMental {
         if (cont == 0) {
             System.out.println("No se encuentran instrumentos con esa especificación");
         }
+        */
     }
 
     /**
      * Método para buscar datos mediante el problema
      */
-    public void buscarPorProblema(String problema)
+    public String buscarPorProblema(String problema)
     {
+
+        StringBuilder instrumento1 = new StringBuilder();
+        instrumentos.stream().filter(instrumento -> instrumento.getProblemaMental().equals(problema)).forEach(instrumento -> instrumento1.append(toString() + "\n"));
+        return instrumento1.toString();
+        /*
         int cont = 0;
         for (Instrumento instrumento : instrumentos) {
             if (instrumento.getProblemaMental().equals(problema)) {
@@ -191,14 +213,20 @@ public class SistemaSaludMental {
         if (cont == 0) {
             System.out.println("No se encuentran instrumentos con esa especificación");
         }
+         */
     }
 
     /**
      * Método para buscar datos mediante la evaluación
      * @param evaluacion
      */
-    public void buscarPorEvaluacion(boolean evaluacion)
+    public String buscarPorEvaluacion(boolean evaluacion)
     {
+        StringBuilder instrumento1 = new StringBuilder();
+        instrumentos.stream().filter(instrumento -> instrumento.isEvaluacion() == evaluacion).forEach(instrumento -> instrumento1.append(toString()));
+        return instrumento1.toString();
+
+        /*
         int cont = 0;
         for (Instrumento instrumento : instrumentos) {
             if (evaluacion == instrumento.isEvaluacion()) {
@@ -210,14 +238,19 @@ public class SistemaSaludMental {
         if (cont == 0) {
             System.out.println("No se encuentran instrumentos con esa especificación");
         }
+         */
     }
 
 
     /**
      * Método para buscar por referencia
      */
-    public void buscarPorReferecnia(String referencia)
+    public String buscarPorReferecnia(String referencia)
     {
+        StringBuilder instrumento1 = new StringBuilder();
+        instrumentos.stream().filter(instrumento -> instrumento.getReferencia().equals(referencia)).forEach(instrumento -> instrumento1.append(toString()).append("\n"));
+        return instrumento1.toString();
+        /*
         int cont = 0;
         for (Instrumento instrumento : instrumentos) {
             if (instrumento.getReferencia().equals(referencia)) {
@@ -229,6 +262,7 @@ public class SistemaSaludMental {
         if (cont == 0) {
             System.out.println("No se encuentran instrumentos con esa especificación");
         }
+         */
     }
 
     /**
