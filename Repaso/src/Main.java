@@ -205,11 +205,8 @@ public class Main {
                             break;
                         default:
                             System.out.println("debes ingresar una opción valida");
-
                     }
             }
         }
-
-
     }
 }

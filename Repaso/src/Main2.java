@@ -64,10 +64,5 @@ public class Main2 {
                     System.out.println("Ingresa una opción valida");
             }
         } while (op != 5);
-
-        ;
-
-
-
     }
 }
