@@ -137,6 +137,7 @@ public class Main {
                     System.out.println("c) Evaluacion");
                     System.out.println("d) Referencia");
                     System.out.println("e) Problema");
+
                     System.out.println("f) Tipo");
                     System.out.println("g) Regresar");
 
