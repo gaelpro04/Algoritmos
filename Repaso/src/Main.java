@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void mai1n(String[] args) {
 
         String op = "a";
         SistemaSaludMental sistema = new SistemaSaludMental();
@@ -84,7 +84,7 @@ public class Main {
                         }
                     } while (!problema.equals("estres") && !problema.equals("ansiedad"));
 
-                    sistema.registrarInstrumento(nombre, tipo, evaluacion, referencia, problema);
+                    sistema.registrarInstrumento(nombre, tipo, evaluacion, String.valueOf(referencia), problema);
                     System.out.println("Registrado exitosamente");
                     break;
                 case "c":
@@ -148,12 +148,12 @@ public class Main {
                         case "a":
                             System.out.println("Ingresa el nombre del instrumento");
                             String nombreInstrumento = sc.nextLine();
-                            sistema.buscarPorInstrumento(nombreInstrumento);
+                            System.out.println(sistema.buscarPorInstrumento(nombreInstrumento));
                             break;
                         case "b":
                             System.out.println("Ingresa el nombre de un autor o el autor");
                             String nombreAutor = sc.nextLine();
-                            sistema.buscarPorAutor(nombreAutor);
+                            System.out.println(sistema.buscarPorAutor(nombreAutor));
                             break;
                         case "c":
                             System.out.println("Ingresa si la evaluación tiene confiabilidad y validez");
@@ -162,7 +162,7 @@ public class Main {
                                 conf1 = sc.next().toLowerCase();
                             } while (!conf1.equals("si") && !conf1.equals("no"));
                             boolean evaluacion1 = conf1.equals("si");
-                            sistema.buscarPorEvaluacion(evaluacion1);
+                            System.out.println(sistema.buscarPorEvaluacion(evaluacion1));
                             break;
                         case "d":
                             System.out.println("Ingresa la cita de referencia");
@@ -178,7 +178,7 @@ public class Main {
                                     System.out.println("No es un numero");
                                 }
                             }
-                            sistema.buscarPorReferecnia(referencia1);
+                            System.out.println(sistema.buscarPorReferecnia(String.valueOf(referencia1)));
                             break;
                         case "e":
                             System.out.println("Ingresa el problema");
@@ -189,7 +189,7 @@ public class Main {
                                     System.out.println("Debes ingresar un problema valido");
                                 }
                             } while (!problema1.equals("ansiedad") && !problema1.equals("estres"));
-                            sistema.buscarPorProblema(problema1);
+                            System.out.println(sistema.buscarPorProblema(problema1));
                             break;
                         case "f":
                             System.out.println("Ingrese el tipo de instrumento(Identificacion/manejo)");
@@ -200,17 +200,14 @@ public class Main {
                                     System.out.println("Debes ingresar un tipo valido");
                                 }
                             } while (!identificacion1.equals("identificacion") && !identificacion1.equals("manejo"));
-                            sistema.buscarPorTipo(identificacion1);
+                            System.out.println(sistema.buscarPorTipo(identificacion1));
                             break;
                         case "g":
                             break;
                         default:
                             System.out.println("debes ingresar una opción valida");
-
                     }
             }
         }
-
-
     }
 }

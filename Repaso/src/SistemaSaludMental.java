@@ -29,7 +29,7 @@ public class SistemaSaludMental {
      */
     public void registrarInstrumento(String nombre, String tipo, boolean evaluacion, String referencia, String problemaMental)
     {
-        instrumentos.add(new Instrumento(nombre, tipo, evaluacion, referencia, problemaMental));
+        instrumentos.add(new Instrumento(nombre, tipo, evaluacion, Integer.parseInt(referencia), problemaMental));
     }
 
     /**
@@ -77,7 +77,7 @@ public class SistemaSaludMental {
 
                 String[] contenido = linea.split(",");
 
-                instrumentos.add(new Instrumento(contenido[0], contenido[1], (contenido[2].equals("true")), contenido[3], contenido[4], contenido[5], Integer.parseInt(contenido[6])));
+                instrumentos.add(new Instrumento(contenido[0], contenido[1], (contenido[2].equals("true")), Integer.parseInt(contenido[3]), contenido[4], contenido[5], Integer.parseInt(contenido[6])));
             }
             reader.close();
 
@@ -127,18 +127,7 @@ public class SistemaSaludMental {
         instrumentos.stream().filter(instrumento -> instrumento.getNombre().equals(instrumentoNombre)).forEach(instrumento -> instrumentos1.append(toString() + "\n"));
         return instrumentos1.toString();
 
-        /*
-        int cont = 0;
-        for (Instrumento instrumento : instrumentos) {
-            if (instrumento.getNombre().equals(instrumentoNombre)) {
-                System.out.println(instrumento);
-                ++cont;
-            }
-        }
-        if (cont == 0) {
-            System.out.println("No se encuentran instrumentos con esa especificación");
-        }
-        */
+
     }
 
     /**
@@ -151,21 +140,7 @@ public class SistemaSaludMental {
         instrumentos.stream().filter(instrumento -> instrumento.getAutores().stream().filter(autores -> autores.equals(autor)).isParallel()).forEach(autores -> instrumento1.append(toString()));
         return instrumento1.toString();
 
-        /*
-        int cont = 0;
-        for (Instrumento instrumento : instrumentos) {
-            for (String autores : instrumento.getAutores()) {
-                if (autores.equals(autor)) {
-                    System.out.println(instrumento);
-                    ++cont;
-                }
-            }
-        }
 
-        if (cont == 0) {
-            System.out.println("No se encuentran instrumentos con esa especificación");
-        }
-         */
     }
 
     /**
@@ -177,19 +152,7 @@ public class SistemaSaludMental {
         StringBuilder instrumento1 = new StringBuilder();
         instrumentos.stream().filter(instrumento -> instrumento.getTipo().equals(tipo)).forEach(instrumento -> instrumento1.append(toString() + "\n"));
         return instrumento1.toString();
-        /*
-        int cont = 0;
-        for (Instrumento instrumento : instrumentos) {
-            if (instrumento.getTipo().equals(tipo)) {
-                System.out.println(instrumento);
-                ++cont;
-            }
-        }
 
-        if (cont == 0) {
-            System.out.println("No se encuentran instrumentos con esa especificación");
-        }
-        */
     }
 
     /**
@@ -201,19 +164,7 @@ public class SistemaSaludMental {
         StringBuilder instrumento1 = new StringBuilder();
         instrumentos.stream().filter(instrumento -> instrumento.getProblemaMental().equals(problema)).forEach(instrumento -> instrumento1.append(toString() + "\n"));
         return instrumento1.toString();
-        /*
-        int cont = 0;
-        for (Instrumento instrumento : instrumentos) {
-            if (instrumento.getProblemaMental().equals(problema)) {
-                System.out.println(instrumento);
-                ++cont;
-            }
-        }
 
-        if (cont == 0) {
-            System.out.println("No se encuentran instrumentos con esa especificación");
-        }
-         */
     }
 
     /**
@@ -226,19 +177,7 @@ public class SistemaSaludMental {
         instrumentos.stream().filter(instrumento -> instrumento.isEvaluacion() == evaluacion).forEach(instrumento -> instrumento1.append(toString()));
         return instrumento1.toString();
 
-        /*
-        int cont = 0;
-        for (Instrumento instrumento : instrumentos) {
-            if (evaluacion == instrumento.isEvaluacion()) {
-                System.out.println(instrumento);
-                ++cont;
-            }
-        }
 
-        if (cont == 0) {
-            System.out.println("No se encuentran instrumentos con esa especificación");
-        }
-         */
     }
 
 
@@ -248,21 +187,9 @@ public class SistemaSaludMental {
     public String buscarPorReferecnia(String referencia)
     {
         StringBuilder instrumento1 = new StringBuilder();
-        instrumentos.stream().filter(instrumento -> instrumento.getReferencia().equals(referencia)).forEach(instrumento -> instrumento1.append(toString()).append("\n"));
+        instrumentos.stream().filter(instrumento -> instrumento.getReferencia() == Integer.parseInt(referencia)).forEach(instrumento -> instrumento1.append(toString()).append("\n"));
         return instrumento1.toString();
-        /*
-        int cont = 0;
-        for (Instrumento instrumento : instrumentos) {
-            if (instrumento.getReferencia().equals(referencia)) {
-                System.out.println(instrumento);
-                ++cont;
-            }
-        }
 
-        if (cont == 0) {
-            System.out.println("No se encuentran instrumentos con esa especificación");
-        }
-         */
     }
 
     /**
