@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Test {
 
     public String invertirCadena(String cadena)
@@ -8,15 +10,14 @@ public class Test {
         for (int i = 0; i < cadena.length(); i++) {
             nuevaCadena[i] = String.valueOf(cadena.charAt(i));
         }
+        for (int i = 0; i < nuevaCadena.length ; i++) {
+            pila.push(nuevaCadena[(i)]);
+        }
 
-        for (int i = 1; i < nuevaCadena.length ; i++) {
-            pila.push(nuevaCadena[(nuevaCadena.length-i)]);
+        StringBuilder cadenita = new StringBuilder(cadena.length());
+        for (int i = 0; i < nuevaCadena.length; i++) {
+            cadenita.append(pila.pop());
         }
-        
-        String cadenaFinal = "";
-        for (int i = 0;i < nuevaCadena.length;i++) {
-            cadenaFinal = pila.pop();
-        }
-        return cadenaFinal;
+        return cadenita.toString();
     }
 }
