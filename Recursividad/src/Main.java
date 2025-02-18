@@ -8,5 +8,6 @@ public class Main {
         System.out.println(s);
         s = ajasi.serie0N(5);
         System.out.println(s);
+        System.out.println(ajasi.fibonacci(7));
     }
 }
