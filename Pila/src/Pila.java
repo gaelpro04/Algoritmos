@@ -87,4 +87,16 @@ public class Pila<T> {
 
         return objeto;
     }
+
+    public T peek()
+    {
+        T objeto = null;
+
+        if (pilaVacia()) {
+            System.out.println("No se puede");
+        } else {
+            objeto = elemento[tope];
+        }
+        return objeto;
+    }
 }
