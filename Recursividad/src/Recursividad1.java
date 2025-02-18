@@ -46,4 +46,21 @@ public class Recursividad1 {
             return n * factorial(n - 1);
         }
     }
+
+
+    public boolean esPrimo(int n)
+    {
+        return primoRecursivo(n,2);
+    }
+
+    public boolean primoRecursivo(int n, int division)
+    {
+        if (n <= 1) {
+            return false;
+        } else if (n % division == 0) {
+            return true;
+        } else {
+           return primoRecursivo(n, division+1);
+        }
+    }
 }
