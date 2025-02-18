@@ -57,10 +57,13 @@ public class Recursividad1 {
     {
         if (n <= 1) {
             return false;
-        } else if (n % division == 0) {
-            return true;
-        } else {
-           return primoRecursivo(n, division+1);
         }
+        if (division > n / 2) {
+            return true;
+        }
+        if (n % division == 0) {
+            return false;
+        }
+        return primoRecursivo(n,division+1);
     }
 }

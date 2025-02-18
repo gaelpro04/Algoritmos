@@ -9,6 +9,6 @@ public class Main {
         s = ajasi.serie0N(5);
         System.out.println(s);
         System.out.println(ajasi.fibonacci(7));
-        System.out.println(ajasi.esPrimo(2));
+        System.out.println(ajasi.esPrimo(6));
     }
 }
