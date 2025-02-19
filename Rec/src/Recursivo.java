@@ -1,4 +1,4 @@
-public class Recursividad1 {
+public class Recursivo {
 
     public String serieN0(int n)
     {
@@ -20,19 +20,6 @@ public class Recursividad1 {
             return builder.append(n + " ").toString();
         } else {
             return builder.append(serie0N(n-1) + n + " ").toString();
-        }
-    }
-
-    public String fibonacci(int n) {
-        if (n == 0) {
-            return "0";  // Caso base: si n es 0, solo devolvemos "0"
-        } else if (n == 1) {
-            return "0 1";  // Caso base: si n es 1, devolvemos "0 1"
-        } else {
-            String secuencia = fibonacci(n - 1);
-            int a = Integer.parseInt(secuencia.split(" ")[n - 1]);
-            int b = Integer.parseInt(secuencia.split(" ")[n - 2]);
-            return secuencia + " " + (a + b);
         }
     }
 

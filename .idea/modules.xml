@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Algoritmos.iml" filepath="$PROJECT_DIR$/.idea/Algoritmos.iml" />
       <module fileurl="file://$PROJECT_DIR$/Pila/Pila.iml" filepath="$PROJECT_DIR$/Pila/Pila.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Recursividad/Recursividad.iml" filepath="$PROJECT_DIR$/Recursividad/Recursividad.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Rec/Rec.iml" filepath="$PROJECT_DIR$/Rec/Rec.iml" />
       <module fileurl="file://$PROJECT_DIR$/Repaso/Repaso.iml" filepath="$PROJECT_DIR$/Repaso/Repaso.iml" />
     </modules>
   </component>
