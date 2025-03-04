@@ -1,4 +1,7 @@
-public class ColaSimple<T> {
+import java.util.AbstractQueue;
+import java.util.Iterator;
+
+public class ColaSimple<T> extends AbstractQueue {
 
     private T[] colaSimple;
     private int inicio, fin;
@@ -18,21 +21,45 @@ public class ColaSimple<T> {
        fin = -1;
     }
 
-    public void insertar(T object)
+    @Override
+    public Iterator iterator() {
+        return null;
+    }
+
+    @Override
+    public int size() {
+        return colaSimple.length;
+    }
+
+    public void mostrar()
     {
-        if (fin < colaSimple.length - 1) {
-            ++fin;
-            colaSimple[fin] = object;
-            if (fin == 0) {
-                inicio = 0;
-            }
+        if (inicio == -1) {
+            System.out.println("Está vacia");
         } else {
-            System.out.println("Desbordamiento");
+            for (int i = inicio; i <= fin; ++i) {
+                System.out.print(colaSimple[i] + " ");
+            }
+            System.out.println();
         }
     }
 
-    public T eliminar()
-    {
+
+    @Override
+    public boolean offer(Object o) {
+        if (fin < colaSimple.length - 1) {
+            ++fin;
+            colaSimple[fin] = (T) o;
+            if (fin == 0) {
+                inicio = 0;
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public Object poll() {
         T dato = null;
         if (inicio != -1) {
             dato = colaSimple[inicio];
@@ -48,16 +75,15 @@ public class ColaSimple<T> {
         return dato;
     }
 
-    public void mostrar()
-    {
-        if (inicio == -1) {
-            System.out.println("Está vacia");
+    @Override
+    public Object peek() {
+        T dato = null;
+        if (inicio != -1) {
+            dato = colaSimple[inicio];
         } else {
-            for (int i = inicio; i <= fin; ++i) {
-                System.out.print(colaSimple[i] + " ");
-            }
-            System.out.println();
+            return null;
         }
+        return dato;
     }
 
 

@@ -1,20 +1,30 @@
 public class Main {
     public static void main(String[] args) {
 
-        Test ajasi = new Test();
-        String simon = "puto";
-        System.out.println(simon);
-        System.out.println(ajasi.invertirCadena(simon));
+        undoRedo hola = new undoRedo(10);
 
-        String mijadondevan = "2-{32+2(2/2)}";
-        System.out.println(mijadondevan);
-        System.out.println(ajasi.revisarSintaxis(mijadondevan));
+        hola.escribir("hola");
+        hola.escribir("que");
+        hola.escribir("tal");
 
-        int[] si = {3,4,5,1,9};
-        Pila<Integer> when = ajasi.ordenadoNumeros(si);
+        System.out.println(hola);
 
-        for (int i : si) {
-            System.out.println(when.pop());
-        }
+        hola.undo();
+
+        System.out.println(hola);
+
+        hola.undo();
+
+        System.out.println(hola);
+
+        hola.redo();
+
+        System.out.println(hola);
+
+        hola.escribir("simon");
+
+        System.out.println(hola.redo());
+
+        System.out.println(hola);
     }
 }
