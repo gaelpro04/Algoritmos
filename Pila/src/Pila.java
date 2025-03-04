@@ -78,7 +78,7 @@ public class Pila<T> {
         if (pilaVacia()) {
             System.out.println("No se puede");
 
-            //Caso contrario solamente tomamtos el valor del elemento para regresarlo y disminuimos el tope, simulando que ese
+            //Caso contrario solamente tomamos el valor del elemento para regresarlo y disminuimos el tope, simulando que ese
             //dato ya no existe
         } else {
             objeto = elemento[tope];
