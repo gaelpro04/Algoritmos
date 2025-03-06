@@ -26,5 +26,9 @@ public class Main {
         System.out.println(hola.redo());
 
         System.out.println(hola);
+
+        Examen examen = new Examen();
+
+        System.out.println(examen.esPalindromo("anita lava la tina"));
     }
 }

@@ -123,4 +123,21 @@ public class Examen {
         }
         return pila.pilaVacia() ? -1 : pila.pop();
     }
+
+    public boolean esPalindromo(String cadena) {
+
+        cadena = cadena.replace(" ", "");
+        Pila<Character> palindromo = new Pila<>(cadena.length());
+
+        for (int i = 0; i < cadena.length(); i++) {
+            palindromo.push(cadena.charAt(i));
+        }
+        for (int i = 0; i < cadena.length(); i++) {
+            if (palindromo.pop() != cadena.charAt(i)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
