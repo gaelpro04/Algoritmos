@@ -216,4 +216,8 @@ public class Recursivo {
         //Una vez terminado la ultima comparación, regresamos la invocación del método y somamos más uno al contador
         return sumaNumeros(cad,acumulador,cont+1);
     }
+
+    public int sumaNumeros(int[] pila) {
+        return 0;
+    }
 }
