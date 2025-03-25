@@ -5,8 +5,8 @@ public class ListaCircular<T> {
 
     public ListaCircular()
     {
-        inicio = new Nodo<>();
-        fin = new Nodo<>();
+        inicio = null;
+        fin = null;
     }
 
     public void insertarInicio(T objeto)
@@ -79,28 +79,24 @@ public class ListaCircular<T> {
                 fin.setSiguiente(inicio);
             }
         }
-
         return objeto;
     }
 
-    public String mostrar()
-    {
+    public String mostrar() {
         StringBuilder builder = new StringBuilder();
         Nodo<T> nodo = inicio;
-        if (inicio == fin) {
-            return builder.toString();
+
+        // Si la lista está vacía
+        if (nodo == null) {
+            return "Lista vacía";
         }
 
-        T dato = nodo.getInfo();
-        nodo = nodo.getSiguiente();
-        return builder.append(String.valueOf(dato)).toString();
-    }
+        // Recorremos la lista
+        do {
+            builder.append(nodo.getInfo().toString()).append(" ");  // Agrega el dato del nodo
+            nodo = nodo.getSiguiente();  // Mueve al siguiente nodo
+        } while (nodo != inicio);  // Termina cuando se vuelve al inicio (en lista circular)
 
-    public T eliminarX()
-    {
-        T objeto = null;
-
-
-        return objeto;
+        return builder.toString();  // Elimina el espacio final extra
     }
 }

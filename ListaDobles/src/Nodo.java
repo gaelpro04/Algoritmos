@@ -44,6 +44,8 @@ public class Nodo<T> {
 
     public String toString()
     {
-        return "Inicio: " + anterior + "\n" + "Informacion: " + "\n" + "Siguiente: " + siguiente;
+        return "Anterior: " + (anterior != null ? anterior.getInfo() : "null") +
+                " | Info: " + info +
+                " | Siguiente: " + (siguiente != null ? siguiente.getInfo() : "null");
     }
 }

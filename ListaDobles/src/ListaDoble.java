@@ -4,7 +4,7 @@ public class ListaDoble<T> {
 
     public ListaDoble()
     {
-        inicio = new Nodo<>();
+        inicio = null;
     }
 
     public void insertarInicio(T objeto)
@@ -23,15 +23,14 @@ public class ListaDoble<T> {
     public void insertarFin(T objeto)
     {
         Nodo<T> n = new Nodo<>();
-        Nodo<T> r = new Nodo<>();
         n.setInfo(objeto);
         n.setSiguiente(null);
 
-        if (inicio == null) {
+        if (inicio.getSiguiente() == null) {
+            inicio.setSiguiente(n);
             n.setAnterior(inicio);
-            inicio = n;
         } else {
-            r = inicio;
+            Nodo<T> r = inicio;
             while (r.getSiguiente() != null) {
                 r = r.getSiguiente();
             }
@@ -84,18 +83,14 @@ public class ListaDoble<T> {
     public String regresarLista()
     {
         StringBuilder builder = new StringBuilder();
-        Nodo<T> nodo = new Nodo<>();
+        Nodo<T> nodo = inicio;
 
         if (inicio == null) {
             System.out.println("lista vacia");
         } else {
-            nodo = inicio;
-
             int n = 1;
             while(nodo != null) {
-
-
-                builder.append(n + " " + nodo.getInfo().toString() + " \n");
+                builder.append("Nodo " + n + ": " + nodo.getInfo() + "\n");
                 ++n;
                 nodo = nodo.getSiguiente();
             }

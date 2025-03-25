@@ -4,7 +4,7 @@ public class ListSimple<T> {
 
     public ListSimple()
     {
-        inicio = new Nodo<>();
+        inicio = null;
     }
 
 
@@ -19,7 +19,6 @@ public class ListSimple<T> {
     {
         Nodo<T> nodo = new Nodo<>(dato);
         if (inicio == null) {
-            nodo.setSig(inicio);
             inicio = nodo;
         } else {
             Nodo<T> r = inicio;
@@ -27,7 +26,6 @@ public class ListSimple<T> {
                 r = r.getSig();
             }
             r.setSig(nodo);
-            nodo.setSig(null);
         }
     }
 
@@ -54,7 +52,31 @@ public class ListSimple<T> {
             objeto = inicio.getInfo();
             inicio = null;
         } else {
+            Nodo<T> r;
+            Nodo<T> a;
+            r = inicio;
+            a = r;
 
+            while (r.getSig() != null) {
+                a = r;
+                r = r.getSig();
+            }
+
+            a.setSig(null);
+            objeto = r.getInfo();
         }
+        return objeto;
+    }
+
+    public String mostrar()
+    {
+        Nodo<T> r = inicio;
+        StringBuilder builder = new StringBuilder();
+
+        while (r != null) {
+            builder.append(r.getInfo() + " -> ");
+            r = r.getSig();
+        }
+        return builder.append("null").toString();
     }
 }
