@@ -1,5 +1,8 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+
+        ListSimple<Integer> listaSimple = new ListSimple<>();
+
+        System.out.println("Lista simple");
     }
 }

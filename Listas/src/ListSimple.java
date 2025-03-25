@@ -2,9 +2,9 @@ public class ListSimple<T> {
 
     private Nodo<T> inicio;
 
-    public ListSimple(Nodo inicio)
+    public ListSimple()
     {
-        this.inicio = inicio;
+        inicio = new Nodo<>();
     }
 
 
@@ -33,6 +33,28 @@ public class ListSimple<T> {
 
     public T eliminarInicio()
     {
-        
+        T objeto = null;
+        if (inicio == null) {
+            System.out.println("Lista vacia");
+        } else {
+            objeto = inicio.getInfo();
+            inicio = inicio.getSig();
+        }
+
+        return objeto;
+    }
+
+    public T eliminarFin()
+    {
+        T objeto = null;
+
+        if (inicio == null) {
+            System.out.println("Lista vacia");
+        } else if (inicio.getSig() == null) {
+            objeto = inicio.getInfo();
+            inicio = null;
+        } else {
+
+        }
     }
 }

@@ -217,7 +217,17 @@ public class Recursivo {
         return sumaNumeros(cad,acumulador,cont+1);
     }
 
-    public int sumaNumeros(int[] pila) {
-        return 0;
+    public int sumaNumeros(Pila<Integer> pila) {
+
+        int valor = pila.pop();
+        if (!pila.pilaVacia()) {
+            valor = valor + pila.pop();
+            pila.push(valor);
+        } else {
+            return valor;
+        }
+        return sumaNumeros(pila);
     }
+
+
 }

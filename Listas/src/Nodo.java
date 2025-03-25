@@ -9,6 +9,12 @@ public class Nodo<T> {
         this.info = info;
     }
 
+    public Nodo()
+    {
+        sig = null;
+        info = null;
+    }
+
     public T getInfo() {
         return info;
     }
