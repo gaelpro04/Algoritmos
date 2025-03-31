@@ -39,13 +39,13 @@ public class ListaDoble<T> {
         }
     }
 
-    public Nodo<T> eliminarInicio()
+    public T eliminarInicio()
     {
-        Nodo<T> nodo = null;
+        T dato = null;
         if (inicio == null) {
             System.out.println("Lista vacia");
         } else {
-            nodo = inicio;
+            dato = inicio.getInfo();
             if (inicio.getSiguiente() == null) {
                 inicio = null;
             } else {
@@ -54,18 +54,19 @@ public class ListaDoble<T> {
             }
         }
 
-        return nodo;
+        return dato;
     }
 
-    public Nodo<T> eliminarFinal()
+    public T eliminarFinal()
     {
-        Nodo<T> nodo = null;
-        Nodo<T> r = new Nodo<>();
+        T dato = null;
+        Nodo<T> r;
 
         if (inicio == null) {
             System.out.println("Lista vacia");
         } else {
             if (inicio.getSiguiente() == null) {
+                dato = inicio.getInfo();
                 inicio = null;
             } else {
                 r = inicio;
@@ -73,11 +74,11 @@ public class ListaDoble<T> {
                 while (r.getSiguiente() != null) {
                     r = r.getSiguiente();
                 }
-                nodo = r;
+                dato = r.getInfo();
                 r.getAnterior().setSiguiente(null);
             }
         }
-        return nodo;
+        return dato;
     }
 
     public String regresarLista()

@@ -26,6 +26,7 @@ public class ListSimple<T> {
                 r = r.getSig();
             }
             r.setSig(nodo);
+            nodo.setSig(null);
         }
     }
 
@@ -78,5 +79,25 @@ public class ListSimple<T> {
             r = r.getSig();
         }
         return builder.append("null").toString();
+    }
+
+    public String mostrarRecursivo(Nodo<T> n)
+    {
+        StringBuilder builder = new StringBuilder();
+        n = inicio;
+
+        if (inicio == null) {
+            return builder.toString();
+        }
+        Nodo<T> r = new Nodo<>();
+        r.setInfo(inicio.getInfo());
+        return null;
+    }
+
+    public String mostrarRecursivoFinal()
+    {
+        StringBuilder builder = new StringBuilder();
+        Nodo<T> n = inicio;
+        return  null;
     }
 }
