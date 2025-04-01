@@ -86,25 +86,24 @@ public class ListaCircular<T> {
         StringBuilder builder = new StringBuilder();
         Nodo<T> nodo = inicio;
 
-        // Si la lista está vacía
         if (nodo == null) {
             return "Lista vacía";
         }
 
         // Recorremos la lista
         do {
-            builder.append(nodo.getInfo().toString()).append(" ");  // Agrega el dato del nodo
-            nodo = nodo.getSiguiente();  // Mueve al siguiente nodo
-        } while (nodo != inicio);  // Termina cuando se vuelve al inicio (en lista circular)
+            builder.append(nodo.getInfo().toString()).append(" ");
+            nodo = nodo.getSiguiente();
+        } while (nodo != inicio);
 
-        return builder.toString();  // Elimina el espacio final extra
+        return builder.toString();
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Primer ejercicio mostrar recursivo
 
     public String mostrarRecursivo() {
-        return mostrarRecursivoAux(inicio);  // Llama al método recursivo desde el inicio
+        return mostrarRecursivoAux(inicio);
     }
 
     private String mostrarRecursivoAux(Nodo<T> nodo) {
@@ -114,7 +113,6 @@ public class ListaCircular<T> {
             return builder.append(nodo.getInfo()).toString();
         }
 
-        // Llamada recursiva para el siguiente nodo
         return builder.append(nodo.getInfo() + " " + mostrarRecursivoAux(nodo.getSiguiente())).toString();
     }
 
@@ -124,46 +122,41 @@ public class ListaCircular<T> {
     public T eliminarX(T x) {
         if (inicio == null) {
             System.out.println("Lista vacía");
-            return null;  // Si la lista está vacía, no hay nada que eliminar
+            return null;
         }
 
         Nodo<T> actual = inicio;
-        Nodo<T> anterior = fin;  // Esto es importante para la lista circular
+        Nodo<T> anterior = fin;
         T objetoEliminado = null;
 
-        // Recorremos la lista circular buscando el nodo con el valor 'x'
         do {
-            if (actual.getInfo().equals(x)) {  // Si encontramos el valor
-                objetoEliminado = actual.getInfo();  // Guardamos el valor para devolverlo
+            if (actual.getInfo().equals(x)) {
+                objetoEliminado = actual.getInfo();
 
-                // Si el nodo es el único en la lista
                 if (inicio == fin && actual == inicio) {
                     inicio = fin = null;
                 } else {
-                    // Si el nodo a eliminar es el primero
                     if (actual == inicio) {
                         inicio = actual.getSiguiente();
                         fin.setSiguiente(inicio);
                     } else if (actual == fin) {
-                        // Si el nodo a eliminar es el último
                         fin = anterior;
                         fin.setSiguiente(inicio);
                     } else {
-                        // Si el nodo a eliminar está en medio
                         anterior.setSiguiente(actual.getSiguiente());
                     }
                 }
-                break;  // Terminamos el bucle una vez eliminamos el nodo
+                break;
             }
-            anterior = actual;  // Mantenemos la referencia al nodo anterior
-            actual = actual.getSiguiente();  // Pasamos al siguiente nodo
-        } while (actual != inicio);  // Termina cuando hemos recorrido toda la lista
+            anterior = actual;
+            actual = actual.getSiguiente();
+        } while (actual != inicio);
 
         if (objetoEliminado == null) {
             System.out.println("Elemento no encontrado");
         }
 
-        return objetoEliminado;  // Devolvemos el valor del nodo eliminado
+        return objetoEliminado;
     }
 
     /**
@@ -173,70 +166,66 @@ public class ListaCircular<T> {
      */
     public int buscar(T x) {
         if (inicio == null) {
-            return -1;  // Si la lista está vacía, retornamos -1
+            return -1;
         }
 
         Nodo<T> actual = inicio;
         int posicion = 0;
 
-        // Recorremos la lista circular
         do {
-            if (actual.getInfo().equals(x)) {  // Si encontramos el valor
-                return posicion;  // Retornamos la posición donde se encuentra el valor
+            if (actual.getInfo().equals(x)) {
+                return posicion;
             }
-            actual = actual.getSiguiente();  // Vamos al siguiente nodo
-            posicion++;  // Aumentamos la posición
-        } while (actual != inicio);  // Terminamos cuando volvemos al inicio
+            actual = actual.getSiguiente();
+            posicion++;
+        } while (actual != inicio);
 
-        return -1;  // Si no encontramos el valor, retornamos -1
+        return -1;
     }
 
     public T eliminaPosicion(int posicion) {
         if (inicio == null) {
             System.out.println("Lista vacía");
-            return null;  // Si la lista está vacía, no hay nada que eliminar
+            return null;
         }
 
         Nodo<T> actual = inicio;
-        Nodo<T> anterior = fin;  // Esto es importante para la lista circular
+        Nodo<T> anterior = fin;
         T objetoEliminado = null;
         int i = 0;
 
-        // Si la posición es 0, eliminamos el nodo en el inicio
         if (posicion == 0) {
             objetoEliminado = inicio.getInfo();
-            if (inicio == fin) {  // Si hay solo un nodo
+            if (inicio == fin) {
                 inicio = fin = null;
             } else {
                 inicio = inicio.getSiguiente();
-                fin.setSiguiente(inicio);  // Mantenemos la circularidad
+                fin.setSiguiente(inicio);
             }
             return objetoEliminado;
         }
 
-        // Recorremos la lista circular hasta la posición indicada
         do {
-            if (i == posicion) {  // Si hemos llegado a la posición
-                objetoEliminado = actual.getInfo();  // Guardamos el valor del nodo a eliminar
-                // Si el nodo a eliminar es el último
+            if (i == posicion) {
+                objetoEliminado = actual.getInfo();
                 if (actual == fin) {
                     fin = anterior;
-                    fin.setSiguiente(inicio);  // Mantenemos la circularidad
+                    fin.setSiguiente(inicio);
                 } else {
-                    anterior.setSiguiente(actual.getSiguiente());  // Ajustamos las referencias
+                    anterior.setSiguiente(actual.getSiguiente());
                 }
-                break;  // Terminamos el bucle una vez eliminamos el nodo
+                break;
             }
-            anterior = actual;  // Mantenemos la referencia al nodo anterior
-            actual = actual.getSiguiente();  // Pasamos al siguiente nodo
+            anterior = actual;
+            actual = actual.getSiguiente();
             i++;
-        } while (actual != inicio);  // Terminamos cuando volvemos al inicio
+        } while (actual != inicio);
 
         if (objetoEliminado == null) {
             System.out.println("Posición no válida");
         }
 
-        return objetoEliminado;  // Devolvemos el valor del nodo eliminado
+        return objetoEliminado;
     }
 
     public void ordenarLista() {
@@ -247,20 +236,17 @@ public class ListaCircular<T> {
             do {
                 Nodo<T> nodo = inicio;
                 intercambiado = false;
-                // Recorremos la lista circular
                 do {
-                    // Comparamos el nodo actual con el siguiente
                     if (((Comparable<T>) nodo.getInfo()).compareTo(nodo.getSiguiente().getInfo()) > 0) {
-                        // Intercambiamos los valores de los nodos
                         T temp = nodo.getInfo();
                         nodo.setInfo(nodo.getSiguiente().getInfo());
                         nodo.getSiguiente().setInfo(temp);
-                        intercambiado = true;  // Indicamos que hubo un intercambio
+                        intercambiado = true;
                     }
                     nodo = nodo.getSiguiente();
-                } while (nodo.getSiguiente() != inicio); // Volver al inicio para circular
+                } while (nodo.getSiguiente() != inicio);
 
-            } while (intercambiado);  // Repetimos si hubo intercambios
+            } while (intercambiado);
         }
     }
 
@@ -277,27 +263,24 @@ public class ListaCircular<T> {
         Nodo<T> nuevoNodo = new Nodo<>();
         nuevoNodo.setInfo(dato);
 
-        // Si la lista está vacía o la posición es 0 (insertar al inicio)
+
         if (inicio == null || posicion == 0) {
-            insertarInicio(dato);  // Reutilizamos el método de insertar al inicio
+            insertarInicio(dato);
             return;
         }
 
         Nodo<T> nodo = inicio;
         int i = 0;
 
-        // Recorrer la lista hasta la posición deseada
         while (nodo.getSiguiente() != inicio && i < posicion - 1) {
             nodo = nodo.getSiguiente();
             i++;
         }
 
-        // Si llegamos a la posición y es válida
         if (i == posicion - 1) {
             nuevoNodo.setSiguiente(nodo.getSiguiente());
             nodo.setSiguiente(nuevoNodo);
 
-            // Si estamos insertando al final, actualizar el fin
             if (nodo == fin) {
                 fin = nuevoNodo;
             }

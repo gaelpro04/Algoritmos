@@ -4,7 +4,7 @@ public class Main {
         System.out.println("LISTA SIMPLE CIRCULAR===============");
         ListaCircular<Integer> listaCircular = new ListaCircular<>();
         listaCircular.insertarInicio(0);
-        listaCircular.insertarFin(1);
+        listaCircular.insertarFin(11);
         listaCircular.insertarFin(2);
         listaCircular.insertarFin(3);
         listaCircular.insertarFin(4);

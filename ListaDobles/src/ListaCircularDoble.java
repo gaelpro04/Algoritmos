@@ -97,14 +97,13 @@ public class ListaCircularDoble<T> {
         if (inicio == null) {
             return "Lista vacía";
         }
-        return mostrarRecursivo(inicio, new StringBuilder());  // Iniciamos la recursión pasando el nodo de inicio
+        return mostrarRecursivo(inicio, new StringBuilder());
     }
 
     // Método recursivo privado que recorre la lista y construye la cadena de salida
     private String mostrarRecursivo(Nodo<T> nodo, StringBuilder builder) {
-        builder.append(nodo.getInfo()).append(" ");  // Agregamos la información del nodo actual
+        builder.append(nodo.getInfo()).append(" ");
 
-        // Si el siguiente nodo es el inicio, hemos recorrido toda la lista circular
         if (nodo.getSiguiente() != inicio) {
             mostrarRecursivo(nodo.getSiguiente(), builder);
         }
@@ -123,29 +122,23 @@ public class ListaCircularDoble<T> {
 
         Nodo<T> actual = inicio;
 
-        // Recorrer la lista circular
         do {
-            // Verificamos si el nodo contiene el valor x
             if (actual.getInfo().equals(x)) {
                 T valorEliminado = actual.getInfo();
 
-                // Si solo hay un nodo en la lista
                 if (inicio == fin && actual == inicio) {
                     inicio = fin = null;
                 }
-                // Si el nodo a eliminar es el primero
                 else if (actual == inicio) {
                     inicio = inicio.getSiguiente();
                     inicio.setAnterior(fin);
                     fin.setSiguiente(inicio);
                 }
-                // Si el nodo a eliminar es el último
                 else if (actual == fin) {
                     fin = fin.getAnterior();
                     fin.setSiguiente(inicio);
                     inicio.setAnterior(fin);
                 }
-                // Si el nodo está en el medio
                 else {
                     Nodo<T> anterior = actual.getAnterior();
                     Nodo<T> siguiente = actual.getSiguiente();
@@ -153,15 +146,15 @@ public class ListaCircularDoble<T> {
                     siguiente.setAnterior(anterior);
                 }
 
-                return valorEliminado;  // Retornamos el valor del nodo eliminado
+                return valorEliminado;
             }
 
-            actual = actual.getSiguiente();  // Avanzamos al siguiente nodo
+            actual = actual.getSiguiente();
 
-        } while (actual != inicio);  // Nos detenemos cuando llegamos al nodo de inicio
+        } while (actual != inicio);
 
         System.out.println("Elemento no encontrado");
-        return null;  // Si no encontramos el valor x
+        return null;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -169,22 +162,21 @@ public class ListaCircularDoble<T> {
 
     public int buscar(T x) {
         if (inicio == null) {
-            return -1;  // Lista vacía
+            return -1;
         }
 
         Nodo<T> actual = inicio;
         int posicion = 0;
 
-        // Recorremos la lista circular
         do {
             if (actual.getInfo().equals(x)) {
-                return posicion;  // Si encontramos el valor, retornamos la posición
+                return posicion;
             }
             actual = actual.getSiguiente();
             posicion++;
-        } while (actual != inicio);  // Se detiene cuando llegamos al nodo de inicio nuevamente
+        } while (actual != inicio);
 
-        return -1;  // Si no encontramos el valor, retornamos -1
+        return -1;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -193,16 +185,15 @@ public class ListaCircularDoble<T> {
     public T eliminarPosicion(int posicion) {
         if (inicio == null) {
             System.out.println("Lista vacía");
-            return null;  // Si la lista está vacía, no podemos eliminar nada
+            return null;
         }
 
         Nodo<T> actual = inicio;
         int indice = 0;
 
-        // Caso especial: eliminar el primer nodo
         if (posicion == 0) {
             T valorEliminado = inicio.getInfo();
-            if (inicio == fin) {  // Solo hay un nodo en la lista
+            if (inicio == fin) {
                 inicio = fin = null;
             } else {
                 inicio = inicio.getSiguiente();
@@ -212,34 +203,31 @@ public class ListaCircularDoble<T> {
             return valorEliminado;
         }
 
-        // Recorrer la lista circular hasta llegar a la posición indicada
         do {
             if (indice == posicion) {
                 T valorEliminado = actual.getInfo();
 
-                // Caso: eliminar un nodo intermedio o el último
                 Nodo<T> anterior = actual.getAnterior();
                 Nodo<T> siguiente = actual.getSiguiente();
 
-                // Si el nodo a eliminar es el último
                 if (actual == fin) {
                     fin = anterior;
                     fin.setSiguiente(inicio);
                     inicio.setAnterior(fin);
-                } else {  // Eliminar un nodo intermedio
+                } else {
                     anterior.setSiguiente(siguiente);
                     siguiente.setAnterior(anterior);
                 }
 
-                return valorEliminado;  // Devolver el valor del nodo eliminado
+                return valorEliminado;
             }
 
             actual = actual.getSiguiente();
             indice++;
-        } while (actual != inicio);  // Si llegamos al nodo de inicio, terminamos
+        } while (actual != inicio);
 
         System.out.println("Posición fuera de rango");
-        return null;  // Si la posición es inválida
+        return null;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -247,7 +235,7 @@ public class ListaCircularDoble<T> {
 
     public void ordenarLista() {
         if (inicio == null || inicio == fin) {
-            return;  // Si la lista está vacía o tiene solo un nodo, no se necesita ordenar
+            return;
         }
 
         boolean swapped;
@@ -255,21 +243,18 @@ public class ListaCircularDoble<T> {
             swapped = false;
             Nodo<T> actual = inicio;
 
-            // Recorremos la lista y comparamos los elementos adyacentes
             do {
                 Nodo<T> siguiente = actual.getSiguiente();
                 if (((Comparable<T>) actual.getInfo()).compareTo(siguiente.getInfo()) > 0) {
-                    // Intercambiamos los valores de los nodos
                     T temp = actual.getInfo();
                     actual.setInfo(siguiente.getInfo());
                     siguiente.setInfo(temp);
 
-                    swapped = true;  // Se hizo un intercambio, por lo que seguimos iterando
+                    swapped = true;
                 }
                 actual = siguiente;
-            } while (actual != fin);  // Continuamos hasta el último nodo
-
-        } while (swapped);  // Si hubo un intercambio, repetimos el proceso
+            } while (actual != fin);
+        } while (swapped);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -278,13 +263,13 @@ public class ListaCircularDoble<T> {
     public void insertarEnPosicion(T dato, int posicion) {
         if (posicion < 0) {
             System.out.println("Posición inválida");
-            return;  // No podemos insertar en una posición negativa
+            return;
         }
 
         Nodo<T> nuevoNodo = new Nodo<>();
         nuevoNodo.setInfo(dato);
 
-        if (inicio == null) {  // Caso cuando la lista está vacía
+        if (inicio == null) {
             if (posicion == 0) {
                 inicio = fin = nuevoNodo;
                 nuevoNodo.setSiguiente(nuevoNodo);
@@ -295,7 +280,7 @@ public class ListaCircularDoble<T> {
             return;
         }
 
-        // Insertar en la posición 0 (al principio)
+
         if (posicion == 0) {
             nuevoNodo.setSiguiente(inicio);
             nuevoNodo.setAnterior(fin);
@@ -308,10 +293,8 @@ public class ListaCircularDoble<T> {
         Nodo<T> actual = inicio;
         int indice = 0;
 
-        // Recorremos la lista para encontrar la posición
         do {
             if (indice == posicion - 1) {
-                // Insertamos el nuevo nodo después de "actual"
                 Nodo<T> siguiente = actual.getSiguiente();
                 actual.setSiguiente(nuevoNodo);
                 siguiente.setAnterior(nuevoNodo);
@@ -321,9 +304,8 @@ public class ListaCircularDoble<T> {
             }
             actual = actual.getSiguiente();
             indice++;
-        } while (actual != inicio);  // Si llegamos al inicio nuevamente, significa que la posición es inválida
+        } while (actual != inicio);
 
-        // Si llegamos aquí, la posición está fuera del rango de la lista
         System.out.println("Posición fuera de rango");
     }
 }
