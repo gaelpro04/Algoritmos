@@ -1,5 +1,14 @@
+
+
+//Clase que modela tres tipos de sumatorias
 public class AnalisisSuma {
 
+
+    /**
+     * Sumatoria ciclica
+     * @param n
+     * @return
+     */
     public long sumatoria0N(long n)
     {
         long sumatoria = 0;
@@ -10,11 +19,21 @@ public class AnalisisSuma {
         return sumatoria;
     }
 
+    /**
+     * Sumatoria de Gauss
+     * @param n
+     * @return
+     */
     public long sumatoriaGauss(long n)
     {
         return n*(n + 1)/2;
     }
 
+    /**
+     * Sumatoria recursiva
+     * @param n
+     * @return
+     */
     public long sumatoriaRecursiva(long n)
     {
         if (n == 0) {
